@@ -69,12 +69,14 @@
           <v-col cols="4">
             <v-text-field v-model="cantidad" label="Cantindad"></v-text-field>
           </v-col>
-          <v-col cols="3">
+          <v-col cols="1">
             <v-btn class="warning" v-on:click="sumar"
               ><v-icon dark>
                 mdi-plus
               </v-icon>
             </v-btn>
+          </v-col>
+          <v-col cols="1">
             <v-btn color="primary" v-on:click="restar"
               ><v-icon dark>
                 mdi-minus
@@ -82,7 +84,7 @@
             </v-btn>
           </v-col>
         </v-row>
-        <v-row align="center" justify="space-around">
+        <v-row>
           <v-col>
             <v-btn color="secondary">Guardar</v-btn>
           </v-col>
@@ -120,7 +122,7 @@ export default {
       this.cantidad += 1;
     },
     restar() {
-      this.cantidad = 1;
+      this.cantidad -= 1;
     },
   },
 };

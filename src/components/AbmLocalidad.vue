@@ -24,6 +24,10 @@
                 <v-btn x-large class="mr-4 primary" @click="submit">
                   Guardar
                 </v-btn>
+                <v-btn
+                v-btn x-large class="mr-4 secondary" @click="clear">
+                  Limpiar
+                </v-btn>
         </v-form>
       </v-card>
     </v-col>

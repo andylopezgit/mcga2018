@@ -21,11 +21,20 @@
                 ></v-select>
               </v-col>
               <v-col cols="2">
-                <v-btn class="mx-2" fab dark color="indigo">
+                <v-btn class="mx-2" fab dark color="indigo" @click="dialog = !dialog">
                   <v-icon dark>
                     mdi-plus
                   </v-icon>
                 </v-btn>
+                <v-dialog
+                  v-model="dialog"
+                  scrollable fullscreen 
+                  persistent :overlay="false"
+                  max-width="500px"
+                  transition="dialog-transition"
+                >
+                  <AbmLocalidad/>
+                </v-dialog>
               </v-col>
             </v-row>
 
@@ -47,12 +56,29 @@
             </v-row>
 
             <v-row>
+              <v-col cols="6">
+                <v-text-field
+                  name="mail"
+                  label="E-mail"
+                  id="mail"
+                ></v-text-field>
+              </v-col>
+              <v-col cols="6">
+                <v-text-field
+                  name="contacto"
+                  label="Contacto"
+                  id="contacto"
+                ></v-text-field>
+              </v-col>
+            </v-row>
+
+            <v-row>
               <v-col>
                 <v-btn x-large class="mr-4 primary" @click="submit">
                   Guardar
                 </v-btn>
                 <v-btn x-large class="warning" @click="clear">
-                  Borrar
+                  Limpiar
                 </v-btn>
               </v-col>
             </v-row>
@@ -63,9 +89,14 @@
   </v-container>
 </template>
 <script>
+import AbmLocalidad from "@/components/AbmLocalidad.vue"
 export default {
+  components: {
+    AbmLocalidad
+  },
   data() {
     return {
+      dialog: false,
       localidad: "",
       localidades: [
         "Capital Federal",
