@@ -2,7 +2,7 @@
   <v-container fluid>
     <v-data-table
       :headers="headers"
-      :items="items"
+      :items="dato"
       :items-per-page="5"
       item-key="name"
       class="elevation-1"
@@ -14,18 +14,22 @@
         nextIcon: 'mdi-plus',
       }"
     ></v-data-table>
+    <h1>{{dato}}</h1>
   </v-container>
 </template>
 
+
 <script>
+import axios from 'axios'
 export default {
   data() {
     return {
+      dato: [],
       headers: [
         {
           text: "Numero",
           aling: "start",
-          value: "numero",
+          value: "id",
         },
         {
           text: "Remitente",
@@ -68,7 +72,12 @@ export default {
       ],
     };
   },
-};
+  created() {
+    axios.get("https://jsonplaceholder.typicode.com/todos/1").then((result) => {
+      this.dato.push(result.data)
+    })
+}
+}
 </script>
 
 <style lang="scss" scoped></style>

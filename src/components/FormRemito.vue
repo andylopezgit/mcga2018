@@ -84,6 +84,27 @@
             </v-btn>
           </v-col>
         </v-row>
+        <v-row align="center">
+          <v-col cols="4">
+            <v-text-field
+              v-model="valorDeclarado"
+              label="Valor DeClarado $"
+            ></v-text-field>
+          </v-col>
+          <v-col cols="4">
+            <span>Seguro: {{ seguro }}</span>
+          </v-col>
+          <v-col cols="4">
+            <span>Subtotal: {{ calsubtotal }} </span>
+          </v-col>
+
+          <v-col cols="3">
+            <v-text-field
+              v-model="importeTotal"
+              label="Importe Total $"
+            ></v-text-field>
+          </v-col>
+        </v-row>
         <v-row>
           <v-col>
             <v-btn color="secondary">Guardar</v-btn>
@@ -100,7 +121,15 @@
 export default {
   data() {
     return {
-      cantidad: 0,
+      seguro: 100,
+
+      valorDeclarado: 1000,
+
+      subtotal: 400,
+
+      importeTotal: 500,
+
+      cantidad: 1,
 
       picker: new Date().toISOString().substr(0, 10),
 
@@ -124,6 +153,25 @@ export default {
     restar() {
       this.cantidad -= 1;
     },
+  },
+
+  computed: {
+    calsubtotal() {
+      return this.cantidad * 400;
+    },
+  },
+  watch: {
+    valorDeclarado(newval, oldval) {
+      if (this.valorDeclarado < 10000) {
+        this.seguro = 100;
+      } else {
+        this.seguro = oldval * 0.1,
+        this.importeTotal = this.seguro + this.calsubtotal
+      }
+    },
+    cantidad () {
+      this.importeTotal = this.seguro + this.calsubtotal
+    }
   },
 };
 </script>

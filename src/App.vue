@@ -10,21 +10,18 @@
       </v-btn>
       <template v-slot:extension>
         <v-tabs align-with-title>
-          <v-tab>
+          <v-tab to="/remitos">
             Remitos
-            <router-link to="/remitos">Remitos</router-link>
+            <!-- <router-link to="/remitos">Remitos</router-link> -->
           </v-tab>
-          <v-tab>
+          <v-tab to="/abmclientes">
             Clientes
-            <router-link to="/abmclientes">Clientes</router-link>
           </v-tab>
-          <v-tab>
+          <v-tab to="/listar">
             Listar
-            <router-link to="/listar">Listar</router-link>
           </v-tab>
-          <v-tab>
+          <v-tab to="/configuracion">
             Configuracion
-            <router-link to="/configuracion">configuracion</router-link>
           </v-tab>
         </v-tabs>
       </template>
